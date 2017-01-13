@@ -12,6 +12,7 @@ node_modules/.bin/fontmin:
 	npm install
 
 fonts/ricdim: index.html $(TTFS) node_modules/.bin/fontmin fonts/rictydiminished
+	if [ -d fonts/ricdim ]; then rm fonts/ricdim/*; fi
 	mkdir -p fonts/ricdim
 	text=`cat index.html` && for f in `ls fonts/rictydiminished| grep .ttf`; do ./node_modules/.bin/fontmin -t "$$text" fonts/rictydiminished/$$f ./fonts/ricdim; done
 	for f in `ls fonts/ricdim`; do to=`echo "$$f"| sed -e 's/RictyDiminished/ricdim/g'`; mv "fonts/ricdim/$$f" "fonts/ricdim/$$to"; done
