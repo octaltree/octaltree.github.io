@@ -7,18 +7,106 @@
 <title>octaltree</title>
 <link rel="stylesheet" href="fonts/ricdim/ricdim-Regular.css" type="text/css">
 <link rel="stylesheet" href="css/reset.css" type="text/css">
+<link rel="stylesheet" href="css/normalize.css" type="text/css">
+<style>
+  body { font-family: "ricdim"; }
+  body {
+    background-color: #111111;
+    color: #839496;
+    font-size: 20px;
+  }
+  h1, h2, h3, h4, h5, h6 { color: #2aa198; }
+  a { color: #268bd2; }
+</style>
+<style>
+  /*
+    "LigatureSymbols" licensed under the SIL Open Font License
+    http://kudakurage.com/ligature_symbols/
+  */
+  @font-face {
+    font-family: 'LigatureSymbols';
+    src: url('fonts/ligature/LigatureSymbols-2.11.eot');
+    src: url('fonts/ligature/LigatureSymbols-2.11.eot?#iefix') format('embedded-opentype'),
+      url('fonts/ligature/LigatureSymbols-2.11.woff') format('woff'),
+      url('fonts/ligature/LigatureSymbols-2.11.ttf') format('truetype'),
+      url('fonts/ligature/LigatureSymbols-2.11.svg#LigatureSymbols') format('svg');
+    src: url('fonts/ligature/LigatureSymbols-2.11.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .lsf, .lsf-icon:before {
+    font-family: 'LigatureSymbols';
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    margin-right: 0.2em;
+    font-size: 150%;
+  }
+  .lsf-icon:before {
+    content:attr(title);
+    margin-right:0.5em;
+    font-size:150%;
+  }
+  .lsf-icon.amazon:before {
+    content: '\E007';
+  }
+</style>
 </head>
 <body>
 <octaltree-main />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.7/riot+compiler.js"></script>
 <script type="riot/tag">
+  <octaltree-head>
+    <style>
+    </style>
+  </octaltree-head>
   <octaltree-main>
-    <div class="wrap">
-      <p>{ foo }</p>
-    </div>
+    <header class="padblk">
+      <h1>octaltree</h1>
+    </header>
+    <section class="padblk">
+      <h2>プロフィール</h2>
+      <div class="prf">
+        <dl>
+          <dt class="lsf row">pen</dt>
+          <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
+          <dt class="lsf row">pen</dt>
+          <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
+        <dl>
+      </div>
+      <h2>リンク</h2>
+      <ul>
+        <li><a href="http://twitter.com/octaltree/"><span class="lsf">twitter</span>@octaltree</a></li>
+        <li><a href="http://github.com/octaltree/"><span class="lsf">github</span>octaltree</a></li>
+        <li><a href="http://octaltree.hateblo.jp/"><span class="lsf">hatena</span>id:octaltree</a></li>
+      </ul>
+    </section>
     const main = this;
-    main.foo = 'bar';
+    <style>
+      ul { list-style-type: none; }
+      .padblk {
+        display: block;
+        padding: 3% 0 0 3%;
+      }
+      /*dl { display: table; }
+      dt.row { display: table-row; }
+      dt, dd {
+        display: table-cell;
+        vertical-align: middle;
+      }*/
+dl        { display: table; }
+	dl dt.row { display: table-row; }
+	dl dt     { display: table-cell; padding-right: 0.4em; }
+	dl dd     { display: table-cell; }
+    </style>
   </octaltree-main>
 </script>
 <script>
