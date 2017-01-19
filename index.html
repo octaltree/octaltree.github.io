@@ -1,253 +1,161 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>octaltree</title>
-
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <style>
-/* パレット
-base03    #002b36  background 黒
-base01    #586e75  comments / secondary content 薄白
-base1     #93a1a1  body text / default code / primary content 白
-orange    #cb4b16  constants
-red       #dc322f  regex, special keywords
-blue      #268bd2  reserved keywords
-cyan      #2aa198  strings, numbers
-green     #859900  operators, other keywords
-
-    let s:base03      = "#002b36"
-    let s:base02      = "#073642"
-    let s:base01      = "#586e75" // Comment
-    let s:base00      = "#657b83"
-    let s:base0       = "#839496" // Normal
-    let s:base1       = "#93a1a1"
-    let s:base2       = "#eee8d5"
-    let s:base3       = "#fdf6e3"
-    let s:yellow      = "#b58900" // 型
-    let s:orange      = "#cb4b16" // プリプロセッサ
-    let s:red         = "#dc322f" // Special Error
-    let s:magenta     = "#d33682" // TODO FIXME XXX
-    let s:violet      = "#6c71c4" // underlined
-    let s:blue        = "#268bd2" // 変数 関数
-    let s:cyan        = "#2aa198" // 定数 文字リテラル 数字リテラル
-    "let s:green       = "#859900" "original
-    let s:green       = "#719e07" "experimental // Statement  if, then, else, endif, switch, etc.  for, do, while, etc.   case, default, etc.  "sizeof", "+", "*", etc. any other keyword  try, catch, throw
-*/
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background: url('res/DSC_0004.JPG');
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      background-color: black;
-    }
-    #vim-wrap {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
-      padding: 0;
-      background-color: rgba(0, 43, 54, 0.85);
-    }
-    #number {
-      background-color: black;
-    }
-    #buff {
-      color: #839496
-    }
-    #buff th { color: #2aa198; }
-    #buff th.no-drag {
-      color: #719e07;
-    }
-    .space:after { content: " "; }
-    .no-drag {
-      user-select:none;
-      -webkit-user-select:none;
-      -moz-user-select:none;
-      -khtml-user-select:none;
-      -webkit-user-drag:none;
-      -khtml-user-drag:none;
-    }
-    /* show #buff like raw markdown */
-    #buff h1, h2, h3, h4, h5, h6 { color: #2aa198; }
-    .comment { color: #586e75 }
-    .todo { color: #d33682 }
-    #buff h1:before, h2:before, h3:before, h4,:before, h5:before, h6:before {
-      color: #dc322f;
-      white-space: pre;
-    }
-    #buff th:before, td:before, tr:after { color:  #719e07; }
-    #buff li:before { color: #719e07; }
-    #buff h1:before { content: "\A# "; }
-    #buff h2:before { content: "\A## "; }
-    #buff h3:before { content: "\A### "; }
-    #buff h4:before { content: "\A#### "; }
-    #buff h5:before { content: "\A##### "; }
-    #buff h6:before { content: "\A###### "; }
-    #buff p:after { white-space: pre; content: "  "; }
-    #buff li { list-style: none; }
-    #buff li:before { content: "* "; }
-    #buff li.hyphen:before { content: "- "; }
-    #buff th:before { content: "|"; }
-    #buff td:before { content: "|"; }
-    #buff tr:after { content: "|"; }
-    #buff ul {
-      padding: 0;
-      margin: 0;
-    }
-    #buff p, span, td, th, li, h1, h2, h3, h4, h5, h6, tr {
-      font-weight: normal;
-      font-size: 30px;
-      padding: 0;
-      margin: 0;
-      word-break: break-all;
-    }
-    /* /show #buff like raw markdown */
-
-    #vim {
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      display: table;
-    }
-    #number, #buff {
-      padding: 0;
-      display: table-cell;
-    }
-    #number {
-      width: 45px;
-      width: 0;
-      padding: 0;
-    }
-    #number-canvas {
-      height: 100%;
-      width: 100%;
-      margin: 0;
-    }
-    /*
-      "LigatureSymbols" licensed under the SIL Open Font License
-      http://kudakurage.com/ligature_symbols/
-    */
-    @font-face {
-        font-family: 'LigatureSymbols';
-        src: url('res/ligatureSymbols/LigatureSymbols-2.11.eot');
-        src: url('res/ligatureSymbols/LigatureSymbols-2.11.eot?#iefix') format('embedded-opentype'),
-             url('res/ligatureSymbols/LigatureSymbols-2.11.woff') format('woff'),
-             url('res/ligatureSymbols/LigatureSymbols-2.11.ttf') format('truetype'),
-             url('res/ligatureSymbols/LigatureSymbols-2.11.svg#LigatureSymbols') format('svg');
-        src: url('res/ligatureSymbols/LigatureSymbols-2.11.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-    #buff a { color: #268bd2; }
-    .lsf, .lsf-icon:before {
-      font-family: 'LigatureSymbols';
-      -webkit-text-rendering: optimizeLegibility;
-      -moz-text-rendering: optimizeLegibility;
-      -ms-text-rendering: optimizeLegibility;
-      -o-text-rendering: optimizeLegibility;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-font-smoothing: antialiased;
-      -ms-font-smoothing: antialiased;
-      -o-font-smoothing: antialiased;
-      font-smoothing: antialiased;
-    }
-    .lsf-icon:before {
-      content:attr(title);
-      margin-right:0.3em;
-      font-size:130%;
-    }
-    .lsf-icon.amazon:before {
-      content: '\E007';
-    }
-
-    /* for debug */
-    /* *
-    #vim {
-      background-color: red;
-    }
-    #number {
-      background-color: #CC6633;
-    }
-    #buff {
-      background-color: #FF9966;
-    }
-    /*/ /* */
-  </style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>octaltree</title>
+<!--<link href="https://fonts.googleapis.com/css?family=Flamenco:300" rel="stylesheet">-->
+<link rel="stylesheet" href="fonts/ricdim/ricdim-Regular.css" type="text/css">
+<link rel="stylesheet" href="css/reset.css" type="text/css">
+<link rel="shortcut icon" type="image/svg+xml" sizes="any" href="res/favicon.svg" />
+<style>
+  body { font-family: "ricdim"; }
+  body {
+    background-color: #000d10;
+    /*color: #839496;
+    color: #93a4a6;*/
+    color: #bbbbbb;
+    font-size: 20px;
+  }
+  a { color: #369be2; }
+  a:visited, a:visited * { color: #bd94c7; }
+  a:hover,
+  a:hover *:not(img){
+    color: #FFE900;
+    background-color: #363037;
+    border-color: #999;
+  }
+</style>
+<style>
+  /*
+    "LigatureSymbols" licensed under the SIL Open Font License
+    http://kudakurage.com/ligature_symbols/
+  */
+  @font-face {
+    font-family: 'LigatureSymbols';
+    src: url('fonts/ligature/LigatureSymbols-2.11.eot');
+    src: url('fonts/ligature/LigatureSymbols-2.11.eot?#iefix') format('embedded-opentype'),
+      url('fonts/ligature/LigatureSymbols-2.11.woff') format('woff'),
+      url('fonts/ligature/LigatureSymbols-2.11.ttf') format('truetype'),
+      url('fonts/ligature/LigatureSymbols-2.11.svg#LigatureSymbols') format('svg');
+    src: url('fonts/ligature/LigatureSymbols-2.11.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .lsf, .lsf-icon:before {
+    font-family: 'LigatureSymbols';
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+  }
+  .lsf-icon.amazon:before {
+    content: '\E007';
+  }
+</style>
 </head>
 <body>
-  <div id="vim-wrap">
-    <div id="vim" class="">
-      <div id="number"><canvas id="number-canvas"></canvas></div>
-      <article id="buff">
-
-        <section id="profile">
-          <h1>Profile</h1>
-          <ul>
-            <li><span class="lsf">user</span> octaltree</li>
-            <li><span class="lsf">pen</span> Student <a href="http://www.uec.ac.jp/">UEC</a></li>
-            <li><a href="http://twitter.com/octaltree" class="lsf">twitter</a> octaltree</li>
-            <li><a href="http://github.com/octaltree" class="lsf">github</a> octaltree</li>
-          </ul>
-        </section>
-
-        <section id="career">
-          <h2>Career</h2>
-          <ul class="visible-xs">
-            <li class="hyphen">Jun 2014, ACM-ICPC Japan Online First-Round Contest 185th</li>
-            <li class="hyphen">Jun 2015, IPA AP</li>
-            <li class="hyphen">Mar 2016, release <a href="https://fapsitu-octaltree.rhcloud.com/">fapsitu</a></li>
-            <li class="hyphen">Apr 2016, release <a href="http://optanime.octaltree.com/">optanime</a></li>
-            <li class="hyphen">Jun 2016, ACM-ICPC Japan Online First-Round Contest 125th</li>
-            <li class="hyphen">Oct 2016, release <a href="http://syllabus.octaltree.com/">syllabus</a></li>
-          </ul>
-
-          <table class="hidden-xs">
-            <thead>
-              <tr><th>Date</th><th>Event</th></tr>
-              <tr><th class="no-drag">:---</th><th class="no-drag">:---</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Jun 2014</td>
-                <td>ACM-ICPC Japan Online First-Round Contest 185th</td></tr>
-              <tr><td>Jun 2015</td>
-                <td>IPA AP</td></tr>
-              <tr><td>Mar 2016</td>
-                  <td>release <a href="https://fapsitu-octaltree.rhcloud.com/">fapsitu</a></td></tr>
-              <tr><td>Apr 2016</td>
-                  <td>release <a href="http://optanime.octaltree.com/">optanime</a></td></tr>
-              <tr><td>Jun 2016</td>
-                <td>ACM-ICPC Japan Online First-Round Contest 125th</td></tr>
-              <tr><td>Oct 2016</td>
-                <td>release <a href="http://syllabus.octaltree.com/">syllabus</a></td></tr>
-            </tbody>
-          </table>
-          <p class="no-drag comment">&lt;!-- <span class="todo">TODO</span> set number --&gt;</p>
-        </section>
-
-      </article>
-    </div>
-  </div>
-  <script src = "js/jquery-1_11_3.min.js"></script>
-  <script>
-    window.jQuery ||
-    document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"><\/script>');
-  </script>
-  <script src="js/bootstrap.min.js"></script>
+<octaltree-main />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.7/riot+compiler.js"></script>
+<script type="riot/tag">
+  <octaltree-main>
+    <header class="padblk" style="margin-bottom: 22px;">
+      <img src="res/octblackwhite.svg" height="100px">
+      <h1 style="font-size: 30px;">octaltree</h1>
+    </header>
+    <section class="padblk">
+      <h2>プロフィール</h2>
+      <div class="inner">
+        <dl>
+          <!--<dt><span class="lsf">pen</span>a</dt>-->
+          <dt class="lsf">pen</dt>
+          <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
+          <dt class="lsf">pin</dt>
+          <dd>東京都調布市</dd>
+        <dl>
+      </div>
+    </section>
+    <section class="padblk">
+      <h2>リンク</h2>
+      <div class="inner">
+        <dl>
+          <dt class="lsf">twitter</dt>
+          <dd><a href="http://twitter.com/octaltree/">@octaltree</a></dd>
+          <dt class="lsf">github</dt>
+          <dd><a href="http://github.com/octaltree/">octaltree</a></dd>
+          <dt class="lsf">hatena</dt>
+          <dd><a href="http://octaltree.hateblo.jp/">id:octaltree</a></dd>
+        </dl>
+      </div>
+    </section>
+    <!--const main = this;-->
+    <style>
+      ul { list-style-type: none; }
+      .padblk {
+        display: block;
+        padding: 3% 0 0 22px;
+        padding: 22px 0 0 22px;
+      }
+      h1, h2 {
+        font-family: 'Flamenco', cursive;
+        /*color: #2aa198;*/
+        font-size: 22px;
+        margin-bottom: 11px;
+      }
+      h1 {
+        color: #ffffff;
+      }
+      h2 {
+        color: #dddddd;
+      }
+      .inner {
+      }
+      /*
+      h2:before {
+        color: #dc322f;
+        white-space: pre;
+        content: "\A## ";
+      }*/
+      .lsf {
+        margin-right: 0.2em;
+        font-size: 26px;
+        /*color: #719e07;*/
+      }
+      dl {
+        overflow: hidden;
+        /*zoom: 1;*/
+        margin-left: 22px;
+      }
+      dl dt, dl dd {
+        line-height: 26px;
+      }
+      dt {
+        width: 1em;
+      }
+      dl dt {
+        /*width: 100px;*/
+        float: left;
+        clear: both;
+      }
+      dl dd {
+        padding: 0 0 5px 10%;
+      }
+    </style>
+  </octaltree-main>
+</script>
+<script>
+(function(){
+  riot.compile(function(){ riot.mount('*'); });
+}());
+</script>
 </body>
 </html>
 <!-- vim: fdm=marker:
