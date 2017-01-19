@@ -5,7 +5,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>octaltree</title>
-<!--<link href="https://fonts.googleapis.com/css?family=Flamenco:300" rel="stylesheet">-->
 <link rel="stylesheet" href="fonts/ricdim/ricdim-Regular.css" type="text/css">
 <link rel="stylesheet" href="css/reset.css" type="text/css">
 <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="res/favicon.svg" />
@@ -63,7 +62,6 @@
 </head>
 <body>
 <octaltree-main />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.7/riot+compiler.js"></script>
 <script type="riot/tag">
   <octaltree-main>
@@ -73,30 +71,26 @@
     </header>
     <section class="padblk">
       <h2>プロフィール</h2>
-      <div class="inner">
-        <dl>
-          <!--<dt><span class="lsf">pen</span>a</dt>-->
-          <dt class="lsf">pen</dt>
-          <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
-          <dt class="lsf">pin</dt>
-          <dd>東京都調布市</dd>
-        <dl>
-      </div>
+      <dl>
+        <!--<dt><span class="lsf">pen</span>a</dt>-->
+        <dt class="lsf">pen</dt>
+        <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
+        <dt class="lsf">pin</dt>
+        <dd>東京都調布市</dd>
+      <dl>
     </section>
     <section class="padblk">
       <h2>リンク</h2>
-      <div class="inner">
-        <dl>
-          <dt class="lsf">twitter</dt>
-          <dd><a href="http://twitter.com/octaltree/">@octaltree</a></dd>
-          <dt class="lsf">github</dt>
-          <dd><a href="http://github.com/octaltree/">octaltree</a></dd>
-          <dt class="lsf">hatena</dt>
-          <dd><a href="http://octaltree.hateblo.jp/">id:octaltree</a></dd>
-        </dl>
-      </div>
+      <dl>
+        <dt class="lsf">twitter</dt>
+        <dd><a href="http://twitter.com/octaltree/">@octaltree</a></dd>
+        <dt class="lsf">github</dt>
+        <dd><a href="http://github.com/octaltree/">octaltree</a></dd>
+        <dt class="lsf">hatena</dt>
+        <dd><a href="http://octaltree.hateblo.jp/">id:octaltree</a></dd>
+      </dl>
     </section>
-    <!--const main = this;-->
+    const main = this;
     <style>
       ul { list-style-type: none; }
       .padblk {
@@ -116,14 +110,6 @@
       h2 {
         color: #dddddd;
       }
-      .inner {
-      }
-      /*
-      h2:before {
-        color: #dc322f;
-        white-space: pre;
-        content: "\A## ";
-      }*/
       .lsf {
         margin-right: 0.2em;
         font-size: 26px;
@@ -131,7 +117,6 @@
       }
       dl {
         overflow: hidden;
-        /*zoom: 1;*/
         margin-left: 22px;
       }
       dl dt, dl dd {
@@ -141,7 +126,6 @@
         width: 1em;
       }
       dl dt {
-        /*width: 100px;*/
         float: left;
         clear: both;
       }
