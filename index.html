@@ -5,17 +5,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>octaltree</title>
+<!--<link href="https://fonts.googleapis.com/css?family=Flamenco:300" rel="stylesheet">-->
 <link rel="stylesheet" href="fonts/ricdim/ricdim-Regular.css" type="text/css">
 <link rel="stylesheet" href="css/reset.css" type="text/css">
+<link rel="shortcut icon" type="image/svg+xml" sizes="any" href="res/favicon.svg" />
 <style>
   body { font-family: "ricdim"; }
   body {
     background-color: #000d10;
     /*background-color: #111111;*/
-    color: #839496;
+    /*color: #839496;
+    color: #93a4a6;
+    color: #aaaaaa;*/
+    color: #bbbbbb;
     font-size: 20px;
   }
-  a { color: #268bd2; }
+  a { color: #369be2; }
 </style>
 <style>
   /*
@@ -52,13 +57,9 @@
 </style>
 </head>
 <body>
-<octaltree-main />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.7/riot+compiler.js"></script>
-<script type="riot/tag">
-  <octaltree-main>
-    <header class="padblk">
-      <h1>octaltree</h1>
+    <header style="margin-bottom: 22px;">
+      <img src="res/octaltree.svg" height="200px">
+      <h1 style="font-size: 30px;">octaltree</h1>
     </header>
     <section class="padblk">
       <h2>プロフィール</h2>
@@ -85,29 +86,35 @@
         </dl>
       </div>
     </section>
-    const main = this;
+    <!--const main = this;-->
     <style>
       ul { list-style-type: none; }
       .padblk {
         display: block;
-        padding: 3% 0 0 3%;
+        padding: 3% 0 0 22px;
+        padding: 22px 0 0 22px;
       }
       h1, h2 {
+        font-family: 'Flamenco', cursive;
         /*color: #2aa198;*/
         font-size: 22px;
         margin-bottom: 11px;
       }
       h1 {
+        color: #ffffff;
+      }
+      h2 {
         color: #dddddd;
       }
       .inner {
-        padding-left: 11px;
+        padding-left: 20px;
       }
+      /*
       h2:before {
         color: #dc322f;
         white-space: pre;
         content: "\A## ";
-      }
+      }*/
       .lsf {
         margin-right: 0.2em;
         font-size: 26px;
@@ -132,13 +139,19 @@
         padding: 0 0 5px 10%;
       }
     </style>
+<!--
+<octaltree-main />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.7/riot+compiler.js"></script>
+<script type="riot/tag">
+  <octaltree-main>
   </octaltree-main>
 </script>
 <script>
 (function(){
   riot.compile(function(){ riot.mount('*'); });
 }());
-</script>
+</script>-->
 </body>
 </html>
 <!-- vim: fdm=marker:
