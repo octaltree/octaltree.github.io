@@ -16,7 +16,7 @@
     /*color: #839496;
     color: #93a4a6;*/
     color: #bbbbbb;
-    font-size: 20px;
+    font-size: 16px;
   }
   a { color: #369be2; }
   a:visited, a:visited * { color: #bd94c7; }
@@ -60,86 +60,73 @@
     content: '\E007';
   }
 </style>
+<style>
+  .padblk {
+    display: block;
+    padding: 3% 0 0 22px;
+    padding: 22px 0 0 22px;
+  }
+  h1, h2 {
+    /*color: #2aa198;*/
+    font-size: 22px;
+    margin-bottom: 11px;
+  }
+  h1 {
+    color: #ffffff;
+  }
+  h2 {
+    color: #dddddd;
+  }
+  .lsf {
+    margin-right: 0.2em;
+    font-size: 26px;
+    /*color: #719e07;*/
+  }
+  dl {
+    overflow: hidden;
+    margin-left: 22px;
+  }
+  dl dt, dl dd {
+    line-height: 26px;
+  }
+  dl dt {
+    float: left;
+    clear: both;
+  }
+  dl dd {
+    padding: 0 0 5px 10%;
+  }
+  dt.lsf {
+    width: 1em;
+  }
+</style>
 </head>
 <body>
-<octaltree-main />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.7/riot+compiler.js"></script>
-<script type="riot/tag">
-  <octaltree-main>
-    <header class="padblk" style="margin-bottom: 22px;">
-      <img src="res/octblackwhite.svg" height="100px">
-      <h1 style="font-size: 30px;">octaltree</h1>
-    </header>
-    <section class="padblk">
-      <h2>プロフィール</h2>
-      <dl>
-        <!--<dt><span class="lsf">pen</span>a</dt>-->
-        <dt class="lsf">pen</dt>
-        <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
-        <dt class="lsf">pin</dt>
-        <dd>東京都調布市</dd>
-      <dl>
-    </section>
-    <section class="padblk">
-      <h2>リンク</h2>
-      <dl>
-        <dt class="lsf">twitter</dt>
-        <dd><a href="http://twitter.com/octaltree/">@octaltree</a></dd>
-        <dt class="lsf">github</dt>
-        <dd><a href="http://github.com/octaltree/">octaltree</a></dd>
-        <dt class="lsf">hatena</dt>
-        <dd><a href="http://octaltree.hateblo.jp/">id:octaltree</a></dd>
-      </dl>
-    </section>
-    const main = this;
-    <style>
-      ul { list-style-type: none; }
-      .padblk {
-        display: block;
-        padding: 3% 0 0 22px;
-        padding: 22px 0 0 22px;
-      }
-      h1, h2 {
-        /*color: #2aa198;*/
-        font-size: 22px;
-        margin-bottom: 11px;
-      }
-      h1 {
-        color: #ffffff;
-      }
-      h2 {
-        color: #dddddd;
-      }
-      .lsf {
-        margin-right: 0.2em;
-        font-size: 26px;
-        /*color: #719e07;*/
-      }
-      dl {
-        overflow: hidden;
-        margin-left: 22px;
-      }
-      dl dt, dl dd {
-        line-height: 26px;
-      }
-      dt {
-        width: 1em;
-      }
-      dl dt {
-        float: left;
-        clear: both;
-      }
-      dl dd {
-        padding: 0 0 5px 10%;
-      }
-    </style>
-  </octaltree-main>
-</script>
-<script>
-(function(){
-  riot.compile(function(){ riot.mount('*'); });
-}());
-</script>
+<header id="head" class="padblk" style="margin-bottom: 22px;">
+  <img src="res/octblackwhite.svg" height="180px">
+  <h1 style="font-size: 30px;">octaltree</h1>
+</header>
+<section id="profile" class="padblk">
+  <h2>プロフィール</h2>
+  <dl>
+    <!--<dt><span class="lsf">pen</span>a</dt>-->
+    <dt class="lsf">pen</dt>
+    <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
+    <dt class="lsf">pin</dt>
+    <dd>東京都調布市</dd>
+  <dl>
+</section>
+<section id="link" class="padblk">
+  <h2>リンク</h2>
+  <dl>
+    <dt class="lsf">twitter</dt>
+    <dd><a href="http://twitter.com/octaltree/">@octaltree</a></dd>
+    <dt class="lsf">github</dt>
+    <dd><a href="http://github.com/octaltree/">octaltree</a></dd>
+    <dt class="lsf">hatena</dt>
+    <dd><a href="http://octaltree.hateblo.jp/">id:octaltree</a></dd>
+  </dl>
+</section>
 </body>
 </html>
 <!-- vim: fdm=marker:
