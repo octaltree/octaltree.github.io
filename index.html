@@ -7,15 +7,14 @@
 <title>octaltree</title>
 <link rel="stylesheet" href="fonts/ricdim/ricdim-Regular.css" type="text/css">
 <link rel="stylesheet" href="css/reset.css" type="text/css">
-<link rel="stylesheet" href="css/normalize.css" type="text/css">
 <style>
   body { font-family: "ricdim"; }
   body {
-    background-color: #111111;
+    background-color: #000d10;
+    /*background-color: #111111;*/
     color: #839496;
     font-size: 20px;
   }
-  h1, h2, h3, h4, h5, h6 { color: #2aa198; }
   a { color: #268bd2; }
 </style>
 <style>
@@ -48,6 +47,7 @@
     font-smoothing: antialiased;
     margin-right: 0.2em;
     font-size: 150%;
+    /*color: #719e07;*/
   }
   .lsf-icon:before {
     content:attr(title);
@@ -64,30 +64,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/3.0.7/riot+compiler.js"></script>
 <script type="riot/tag">
-  <octaltree-head>
-    <style>
-    </style>
-  </octaltree-head>
   <octaltree-main>
     <header class="padblk">
       <h1>octaltree</h1>
     </header>
     <section class="padblk">
       <h2>プロフィール</h2>
-      <div class="prf">
+      <div class="inner">
         <dl>
           <dt class="lsf row">pen</dt>
           <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
-          <dt class="lsf row">pen</dt>
-          <dd><a href="http://www.uec.ac.jp/">電気通信大学</a></dd>
+          <dt class="lsf row">pin</dt>
+          <dd>東京都調布市</dd>
         <dl>
       </div>
+    </section>
+    <section class="padblk">
       <h2>リンク</h2>
-      <ul>
-        <li><a href="http://twitter.com/octaltree/"><span class="lsf">twitter</span>@octaltree</a></li>
-        <li><a href="http://github.com/octaltree/"><span class="lsf">github</span>octaltree</a></li>
-        <li><a href="http://octaltree.hateblo.jp/"><span class="lsf">hatena</span>id:octaltree</a></li>
-      </ul>
+      <div class="inner">
+        <dl>
+          <dt class="lsf">twitter</dt>
+          <dd><a href="http://twitter.com/octaltree/">@octaltree</a></dd>
+          <dt class="lsf">github</dt>
+          <dd><a href="http://github.com/octaltree/">octaltree</a></dd>
+          <dt class="lsf">hatena</dt>
+          <dd><a href="http://octaltree.hateblo.jp/">id:octaltree</a></dd>
+        </dl>
+      </div>
     </section>
     const main = this;
     <style>
@@ -96,16 +99,22 @@
         display: block;
         padding: 3% 0 0 3%;
       }
-      /*dl { display: table; }
-      dt.row { display: table-row; }
-      dt, dd {
-        display: table-cell;
-        vertical-align: middle;
-      }*/
-dl        { display: table; }
-	dl dt.row { display: table-row; }
-	dl dt     { display: table-cell; padding-right: 0.4em; }
-	dl dd     { display: table-cell; }
+      h1, h2 {
+        color: #2aa198;
+        font-size: 22px;
+        margin-bottom: 11px;
+      }
+      h1 {
+        color: #dddddd;
+      }
+      .inner {
+        padding-left: 11px;
+      }
+      h2:before {
+        color: #dc322f;
+        white-space: pre;
+        content: "\A## ";
+      }
     </style>
   </octaltree-main>
 </script>
