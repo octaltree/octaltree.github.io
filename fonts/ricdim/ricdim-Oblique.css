@@ -1,0 +1,17 @@
+/*
+  RictyDiminished licensed under the SIL Open Font License
+  http://www.rs.tus.ac.jp/yyusa/ricty_diminished.html
+  ricdim is subset of RictyDiminished licensed under SIL Open Font License
+*/
+@font-face {
+    font-family: "ricdim";
+    src: url("ricdim-Oblique.eot"); /* IE9 */
+    src: url("ricdim-Oblique.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("ricdim-Oblique.woff") format("woff"), /* chrome, firefox */
+    url("ricdim-Oblique.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("ricdim-Oblique.svg#ricdim") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
