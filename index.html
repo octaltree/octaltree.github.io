@@ -45,14 +45,6 @@
     -ms-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
     font-smoothing: antialiased;
-    margin-right: 0.2em;
-    font-size: 150%;
-    /*color: #719e07;*/
-  }
-  .lsf-icon:before {
-    content:attr(title);
-    margin-right:0.5em;
-    font-size:150%;
   }
   .lsf-icon.amazon:before {
     content: '\E007';
@@ -114,6 +106,26 @@
         color: #dc322f;
         white-space: pre;
         content: "\A## ";
+      }
+      .lsf {
+        margin-right: 0.2em;
+        font-size: 26px;
+        /*color: #719e07;*/
+      }
+      dl {
+        overflow: hidden;
+        /*zoom: 1;*/
+      }
+      dl dt, dl dd {
+        line-height: 26px;
+      }
+      dl dt {
+        /*width: 100px;*/
+        float: left;
+        clear: both;
+      }
+      dl dd {
+        padding: 0 0 5px 120px;
       }
     </style>
   </octaltree-main>
