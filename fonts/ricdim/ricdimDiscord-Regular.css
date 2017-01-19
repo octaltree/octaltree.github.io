@@ -1,0 +1,17 @@
+/*
+  RictyDiminished licensed under the SIL Open Font License
+  http://www.rs.tus.ac.jp/yyusa/ricty_diminished.html
+  ricdim is subset of RictyDiminished licensed under SIL Open Font License
+*/
+@font-face {
+    font-family: "ricdim Discord";
+    src: url("ricdimDiscord-Regular.eot"); /* IE9 */
+    src: url("ricdimDiscord-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("ricdimDiscord-Regular.woff") format("woff"), /* chrome, firefox */
+    url("ricdimDiscord-Regular.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("ricdimDiscord-Regular.svg#ricdim Discord") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
