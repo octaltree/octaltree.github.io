@@ -1,0 +1,71 @@
+/*
+  "LigatureSymbols" licensed under the SIL Open Font License
+  http://kudakurage.com/ligature_symbols/
+*/
+@font-face {
+  font-family: 'LigatureSymbols';
+  src: url('../fonts/ligature/LigatureSymbols-2.11.eot');
+  src: url('../fonts/ligature/LigatureSymbols-2.11.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/ligature/LigatureSymbols-2.11.woff') format('woff'),
+    url('../fonts/ligature/LigatureSymbols-2.11.ttf') format('truetype'),
+    url('../fonts/ligature/LigatureSymbols-2.11.svg#LigatureSymbols') format('svg');
+  src: url('../fonts/ligature/LigatureSymbols-2.11.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.lsf, .lsf-icon:before {
+  font-family: 'LigatureSymbols';
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  -ms-text-rendering: optimizeLegibility;
+  -o-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+.lsf-icon.amazon:before {
+  content: '\E007';
+}
+
+html, body, body * {
+  font-family: "ricdim";
+  background-color: #000d10;
+  color: #cccccc;
+  font-size: calc(16px + 0.5vw);
+}
+h1, h2 { margin-bottom: 0.7rem; }
+h1 { color: #f5f5f5; }
+
+a, a:visited, a:visited * { color: #cccccc; }
+a:hover,
+a:hover *:not(img){
+  color: #FFE900;
+  background-color: #363037;
+  border-color: #999;
+}
+
+.padblk {
+  display: block;
+  padding: 3vh 0 0 1rem;
+}
+
+dl {
+  overflow: hidden;
+  margin-left: 1.5rem;
+}
+dt {
+  float: left;
+  clear: both;
+}
+dt, dd {
+  line-height: 2rem;
+}
+dd {
+  margin-left: 5vw;
+}
+.icoright {
+  font-size: 1.5rem;
+}
